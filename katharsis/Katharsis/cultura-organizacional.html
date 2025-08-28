@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cultura Organizacional | Somos Ovejas Negras de Rebaño - Katharsis K</title>
+  <meta name="description" content="Descubre nuestra cultura organizacional: Somos Ovejas Negras de Rebaño. Transformamos la diferencia en fuerza colectiva." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --panel: #12161f;
+      --card: #161b26;
+      --muted: #93a0b4;
+      --text: #e9eef7;
+      --brand: #6cf0c2; /* menta */
+      --brand-2: #5aa8ff; /* azul */
+      --accent: #ffb757; /* dorado suave */
+      --danger: #ff6b6b;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      color:var(--text); background:linear-gradient(180deg,var(--bg), #0d1117 30%, #0b0d12);
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(1120px, 92%); margin-inline:auto}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(11,13,18,.65); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo{width:40px; aspect-ratio:1/1; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:var(--shadow);}
+    .brand h1{font-size:18px; letter-spacing:.4px; margin:0}
+
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{padding:8px 12px; border-radius:999px; color:var(--muted)}
+    .menu a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .cta{background:linear-gradient(135deg,var(--brand-2),var(--brand)); color:#0b0d12 !important; font-weight:700}
+
+    .burger{display:none; width:40px; height:40px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0e1219; align-items:center; justify-content:center}
+
+    @media (max-width: 860px){
+      .menu{display:none}
+      .burger{display:flex}
+    }
+
+    /* Mobile drawer */
+    .drawer{position:fixed; inset:0 0 auto auto; width:100%; height:0; overflow:hidden; background:rgba(8,10,14,.8); backdrop-filter:blur(8px); z-index:40; transition:height .35s ease}
+    .drawer.open{height:100%}
+    .drawer .panel{background:var(--panel); border-top-left-radius:20px; border-top-right-radius:20px; padding:18px; box-shadow:var(--shadow); position:absolute; bottom:0; left:0; right:0}
+    .drawer a{display:block; padding:14px 10px; border-radius:12px; color:var(--muted)}
+    .drawer a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .drawer .cta{margin-top:8px; text-align:center}
+
+    /* Hero */
+    .hero{position:relative; padding:96px 0 120px; overflow:hidden}
+    .hero .bg{
+      position:absolute; inset:0; z-index:-1; opacity:.35;
+      background-image:url('https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=1950&auto=format&fit=crop');
+      background-size:cover; background-position:center;
+      filter:saturate(120%) contrast(110%);
+    }
+    .gradient{position:absolute; inset:0; background:radial-gradient(600px 300px at 15% 20%, rgba(90,168,255,.35), transparent 60%), radial-gradient(600px 300px at 85% 80%, rgba(108,240,194,.25), transparent 60%)}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:36px; align-items:center}
+    .eyebrow{display:inline-flex; gap:8px; align-items:center; font-weight:600; color:#0b0d12; background:linear-gradient(135deg,var(--brand),var(--brand-2)); padding:6px 12px; border-radius:999px}
+    .hero h2{font-size:clamp(28px,5vw,56px); line-height:1.05; margin:14px 0 10px}
+    .hero p{color:var(--muted); font-size:clamp(15px,2vw,18px)}
+    .hero-cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; font-weight:700; border:1px solid rgba(255,255,255,.08); background:var(--card); color:var(--text)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand-2),var(--brand)); color:#0b0d12; border:none}
+    .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+
+    @media (max-width: 860px){
+      .hero{padding:72px 0 96px}
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    /* Sections */
+    section{padding:72px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:18px; margin-bottom:28px}
+    .section-head h3{margin:0; font-size:clamp(22px,3.6vw,32px)}
+    .section-head p{margin:0; color:var(--muted)}
+
+    /* Principios */
+    .principios{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px}
+    .principio{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
+    .principio .numero{display:inline-block; width:40px; height:40px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); border-radius:50%; text-align:center; line-height:40px; font-weight:800; color:#0b0d12; margin-bottom:16px}
+    .principio h4{margin:0 0 12px 0; color:var(--brand)}
+
+    /* Testimonios */
+    .testimonios{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:22px}
+    .testimonio{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); text-align:center}
+    .testimonio img{width:80px; height:80px; border-radius:50%; object-fit:cover; margin:0 auto 16px; border:3px solid var(--brand)}
+    .testimonio .nombre{font-weight:700; margin-bottom:8px}
+    .testimonio .rol{color:var(--accent); font-size:14px; margin-bottom:12px}
+    .testimonio .texto{color:var(--muted); font-style:italic}
+
+    /* Test de Rebaño */
+    .quiz{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+    .quiz .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .quiz h4{margin:8px 0}
+    .quiz label{display:block; padding:8px 10px; margin:6px 0; border:1px solid rgba(255,255,255,.08); border-radius:12px; cursor:pointer; color:var(--muted)}
+    .quiz input{margin-right:10px}
+    .quiz .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .score{font-weight:800; font-size:28px}
+    .score.good{color:var(--brand)}
+    .score.mid{color:var(--accent)}
+    .score.bad{color:var(--danger)}
+    @media (max-width: 900px){.quiz{grid-template-columns:1fr}}
+
+    /* Footer */
+    footer{padding:28px 0 48px; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .foot .small{font-size:13px}
+    .foot .soc{display:flex; gap:10px}
+    .soc a{display:inline-flex; width:38px; height:38px; align-items:center; justify-content:center; border-radius:12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08)}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .chip{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); color:#cfe3ff; border:1px solid rgba(255,255,255,.08); padding:6px 10px; border-radius:999px; font-size:13px}
+    .spacer{height:18px}
+    .frase-principal{font-size:clamp(18px,3vw,24px); line-height:1.4; text-align:center; color:var(--brand); font-weight:600; margin:40px 0; padding:30px; background:rgba(108,240,194,.08); border-radius:var(--radius); border:1px solid rgba(108,240,194,.2)}
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <span class="logo" aria-hidden="true"></span>
+        <h1>Katharsis K</h1>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#k2025">Descubre K 2025</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="index.html#equipo">Equipo K</a>
+        <a href="index.html#test">Test de Oveja Negra</a>
+        <a href="index.html#info">Empresa</a>
+        <a class="cta" href="https://wa.me/573197550813" target="_blank" rel="noopener">Contáctanos</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
+    </div>
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="panel container">
+        <a href="index.html" onclick="closeDrawer()">Inicio</a>
+        <a href="index.html#k2025" onclick="closeDrawer()">Descubre K 2025</a>
+        <a href="index.html#productos" onclick="closeDrawer()">Productos</a>
+        <a href="index.html#equipo" onclick="closeDrawer()">Equipo K</a>
+        <a href="index.html#test" onclick="closeDrawer()">Test de Oveja Negra</a>
+        <a href="index.html#info" onclick="closeDrawer()">Empresa</a>
+        <a class="cta" href="https://wa.me/573197550813" target="_blank" rel="noopener" onclick="closeDrawer()">Contáctanos</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="bg"></div>
+      <div class="gradient"></div>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Cultura Organizacional</span>
+          <h2>Somos <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Ovejas Negras de Rebaño</span></h2>
+          <p>En Katharsis transformamos la diferencia en fuerza colectiva. Porque la verdadera irrupción nace de la unión, empatía y la creatividad compartida.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#principios">Ver Principios</a>
+            <a class="btn" href="#test-rebaño">Test de Rebaño</a>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Equipo trabajando en colaboración" style="border-radius:var(--radius); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow)"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frase Principal -->
+    <section>
+      <div class="container">
+        <div class="frase-principal">
+          "En Katharsis somos ovejas negras de rebaño, transformamos la diferencia en fuerza colectiva, porque la verdadera irrupción nace de la unión, empatía y la creatividad compartida"
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 Principios de Rebaño -->
+    <section id="principios">
+      <div class="container">
+        <div class="section-head">
+          <h3>10 Principios de Rebaño</h3>
+          <p class="muted">Los valores que guían nuestra cultura organizacional</p>
+        </div>
+        <div class="principios">
+          <article class="principio">
+            <div class="numero">1</div>
+            <h4>Diversidad como Fortaleza</h4>
+            <p class="muted">Celebramos las diferencias y las convertimos en ventajas competitivas para el equipo.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">2</div>
+            <h4>Colaboración Sobre Competencia</h4>
+            <p class="muted">Priorizamos el trabajo en equipo y la sinergia sobre el individualismo.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">3</div>
+            <h4>Innovación Continua</h4>
+            <p class="muted">Buscamos constantemente nuevas formas de resolver problemas y crear valor.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">4</div>
+            <h4>Empatía Radical</h4>
+            <p class="muted">Nos ponemos en el lugar del otro para entender mejor sus necesidades y perspectivas.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">5</div>
+            <h4>Transparencia Total</h4>
+            <p class="muted">Compartimos información abiertamente para construir confianza y alineación.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">6</div>
+            <h4>Adaptabilidad</h4>
+            <p class="muted">Nos mantenemos flexibles ante los cambios y aprendemos de cada experiencia.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">7</div>
+            <h4>Responsabilidad Compartida</h4>
+            <p class="muted">Cada miembro del rebaño asume la responsabilidad del éxito colectivo.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">8</div>
+            <h4>Creatividad Colectiva</h4>
+            <p class="muted">Las mejores ideas surgen de la colaboración y la diversidad de pensamiento.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">9</div>
+            <h4>Resiliencia del Rebaño</h4>
+            <p class="muted">Juntos superamos los desafíos y nos fortalecemos en la adversidad.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">10</div>
+            <h4>Legado Colectivo</h4>
+            <p class="muted">Construimos algo más grande que nosotros mismos, dejando un impacto duradero.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios">
+      <div class="container">
+        <div class="section-head">
+          <h3>Testimonios de Rebaño</h3>
+          <p class="muted">Voces de nuestro equipo que viven la cultura</p>
+        </div>
+        <div class="testimonios">
+          <article class="testimonio">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop" alt="Carmen"/>
+            <div class="nombre">Carmen</div>
+            <div class="rol">Líder de Innovación</div>
+            <div class="texto">"Ser oveja negra en este rebaño me ha permitido encontrar mi voz y contribuir de manera única al equipo."</div>
+          </article>
+          <article class="testimonio">
+            <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=400&auto=format&fit=crop" alt="Roberto"/>
+            <div class="nombre">Roberto</div>
+            <div class="rol">Estratega Creativo</div>
+            <div class="texto">"La diversidad de pensamiento aquí no es solo tolerada, es celebrada y aprovechada."</div>
+          </article>
+          <article class="testimonio">
+            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=400&auto=format&fit=crop" alt="William"/>
+            <div class="nombre">William</div>
+            <div class="rol">Facilitador de Equipos</div>
+            <div class="texto">"Cada día aprendo algo nuevo de mis compañeros. Somos más fuertes juntos."</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="about-logo">
+          <span class="logo" aria-hidden="true"></span>
+          <div>
+            <strong>Katharsis K</strong>
+            <div class="small">© <span id="year"></span> – Cultura Organizacional</div>
+          </div>
+        </div>
+      </div>
+      <div class="soc">
+        <a href="index.html" aria-label="Volver al inicio">🏠</a>
+        <a href="https://wa.me/573197550813" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile drawer
+    const drawer = document.getElementById('drawer');
+    const burger = document.getElementById('burger');
+    const closeDrawer = () => { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); };
+    window.closeDrawer = closeDrawer;
+    burger.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      drawer.setAttribute('aria-hidden', String(!open));
+    });
+
+
+  </script>
+</body>
+</html>

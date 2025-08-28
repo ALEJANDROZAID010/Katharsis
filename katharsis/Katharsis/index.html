@@ -117,17 +117,34 @@
     @media (max-width: 640px){.grid{grid-template-columns:1fr}}
 
     /* Test */
-    .quiz{display:grid; grid-template-columns:1fr 1fr; gap:22px}
-    .quiz .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    .quiz h4{margin:8px 0}
-    .quiz label{display:block; padding:8px 10px; margin:6px 0; border:1px solid rgba(255,255,255,.08); border-radius:12px; cursor:pointer; color:var(--muted)}
-    .quiz input{margin-right:10px}
-    .quiz .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-    .score{font-weight:800; font-size:28px}
-    .score.good{color:var(--brand)}
-    .score.mid{color:var(--accent)}
-    .score.bad{color:var(--danger)}
-    @media (max-width: 900px){.quiz{grid-template-columns:1fr}}
+    /* Test de Oveja Negra */
+    .test-paso{max-width:800px; margin:0 auto}
+    .form-test{display:flex; flex-direction:column; gap:20px}
+    .form-group{display:flex; flex-direction:column; gap:8px}
+    .form-group label{font-weight:600; color:var(--text)}
+    .form-group input, .form-group select{padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:var(--panel); color:var(--text); font-size:16px}
+    .form-group input:focus, .form-group select:focus{outline:none; border-color:var(--brand); box-shadow:0 0 0 3px rgba(108,240,194,.1)}
+    .form-group small{font-size:13px; opacity:.8}
+    
+    .progress-bar{background:var(--panel); border-radius:12px; height:8px; margin-bottom:24px; position:relative; overflow:hidden}
+    .progress-fill{background:linear-gradient(135deg,var(--brand),var(--brand-2)); height:100%; width:0%; transition:width .3s ease}
+    .progress-text{position:absolute; top:-25px; right:0; font-size:14px; color:var(--muted)}
+    
+    .pregunta{display:flex; flex-direction:column; gap:16px}
+    .pregunta h4{font-size:20px; margin:0; color:var(--brand)}
+    .opciones{display:flex; flex-direction:column; gap:12px}
+    .opcion{display:flex; align-items:center; gap:12px; padding:16px; border:1px solid rgba(255,255,255,.08); border-radius:12px; cursor:pointer; transition:all .2s ease}
+    .opcion:hover{border-color:var(--brand); background:rgba(108,240,194,.05)}
+    .opcion input[type="radio"]{width:20px; height:20px; accent-color:var(--brand)}
+    .opcion label{cursor:pointer; flex:1; margin:0}
+    
+    .actions{display:flex; justify-content:space-between; gap:16px; margin-top:24px}
+    .btn:disabled{opacity:.5; cursor:not-allowed}
+    
+    .resultado-card{text-align:center; padding:32px}
+    .resultado-tipo{font-size:32px; font-weight:800; color:var(--brand); margin:16px 0}
+    .resultado-puntaje{font-size:24px; color:var(--accent); margin:16px 0}
+    .resultado-mensaje{font-size:18px; line-height:1.6; color:var(--muted); margin:24px 0}
 
     /* Info empresa */
     .info{display:grid; grid-template-columns:1fr 1fr; gap:22px}
@@ -160,6 +177,7 @@
         <a href="#k2025">Descubre K 2025</a>
         <a href="#productos">Productos</a>
         <a href="#equipo">Equipo K</a>
+        <a href="cultura-organizacional.html">Cultura Organizacional</a>
         <a href="#test">Test de Oveja Negra</a>
         <a href="#info">Empresa</a>
         <a class="cta" href="https://wa.me/573197550813" target="_blank" rel="noopener">Contáctanos</a>
@@ -171,6 +189,7 @@
         <a href="#k2025" onclick="closeDrawer()">Descubre K 2025</a>
         <a href="#productos" onclick="closeDrawer()">Productos</a>
         <a href="#equipo" onclick="closeDrawer()">Equipo K</a>
+        <a href="cultura-organizacional.html" onclick="closeDrawer()">Cultura Organizacional</a>
         <a href="#test" onclick="closeDrawer()">Test de Oveja Negra</a>
         <a href="#info" onclick="closeDrawer()">Empresa</a>
         <a class="cta" href="https://wa.me/573197550813" target="_blank" rel="noopener" onclick="closeDrawer()">Contáctanos</a>
@@ -318,33 +337,84 @@
       <div class="container">
         <div class="section-head">
           <h3>Test de Oveja Negra</h3>
-          <p class="muted">3 preguntas rápidas para medir tu rebeldía creativa 🐑⚡</p>
+          <p class="muted">21 preguntas para descubrir tu nivel de rebeldía creativa 🐑⚡</p>
         </div>
-        <div class="quiz">
+        
+        <!-- Paso 1: Formulario de datos personales -->
+        <div id="paso-1" class="test-paso">
           <div class="card">
-            <h4>1) Ante una regla injusta en un proyecto, ¿qué haces?</h4>
-            <label><input type="radio" name="q1" value="0">La sigues para no tener problemas.</label>
-            <label><input type="radio" name="q1" value="1">Preguntas el porqué y propones un ajuste.</label>
-            <label><input type="radio" name="q1" value="2">La cambias y luego explicas tu motivo.</label>
-
-            <h4>2) ¿Qué tan cómodo te sientes presentando ideas raras?</h4>
-            <label><input type="radio" name="q2" value="0">Prefiero no arriesgarme.</label>
-            <label><input type="radio" name="q2" value="1">Depende del equipo.</label>
-            <label><input type="radio" name="q2" value="2">¡Es mi zona favorita!</label>
-
-            <h4>3) Si tu prototipo falla en vivo...</h4>
-            <label><input type="radio" name="q3" value="0">Me frustro y lo pauso.</label>
-            <label><input type="radio" name="q3" value="1">Improviso un plan B.</label>
-            <label><input type="radio" name="q3" value="2">Lo convierto en parte del show.</label>
-
+            <h4>Paso 1: Tus datos</h4>
+            <p class="muted">Completa tus datos para comenzar el test</p>
+            
+            <form id="formulario-usuario" class="form-test">
+              <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="celular">Número de celular *</label>
+                <input type="tel" id="celular" name="celular" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="pais">País *</label>
+                <select id="pais" name="pais" required>
+                  <option value="">Selecciona tu país</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="México">México</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Chile">Chile</option>
+                  <option value="Perú">Perú</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Venezuela">Venezuela</option>
+                  <option value="España">España</option>
+                  <option value="Estados Unidos">Estados Unidos</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Correo electrónico *</label>
+                <input type="email" id="email" name="email" required>
+                <small class="muted">Solo puedes hacer el test una vez por email</small>
+              </div>
+              
+              <button type="submit" class="btn primary">Comenzar Test</button>
+            </form>
+          </div>
+        </div>
+        
+        <!-- Paso 2-22: Preguntas del test -->
+        <div id="paso-preguntas" class="test-paso" style="display: none;">
+          <div class="card">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+              <span class="progress-text" id="progress-text">Pregunta 1 de 21</span>
+            </div>
+            
+            <div id="pregunta-actual">
+              <!-- Las preguntas se cargarán dinámicamente -->
+            </div>
+            
             <div class="actions">
-              <button class="btn primary" onclick="calcularTest()">Calcular resultado</button>
-              <button class="btn" onclick="reiniciarTest()">Reiniciar</button>
+              <button class="btn" id="btn-anterior" onclick="preguntaAnterior()" style="display: none;">← Anterior</button>
+              <button class="btn primary" id="btn-siguiente" onclick="preguntaSiguiente()">Siguiente →</button>
             </div>
           </div>
-          <div class="card" id="resultado">
-            <h4>Tu resultado</h4>
-            <p class="muted">Responde las preguntas y presiona <strong>Calcular resultado</strong>.</p>
+        </div>
+        
+        <!-- Paso 23: Resultado final -->
+        <div id="paso-resultado" class="test-paso" style="display: none;">
+          <div class="card">
+            <h4>¡Tu resultado está listo! 🎉</h4>
+            <div id="resultado-final">
+              <!-- El resultado se cargará dinámicamente -->
+            </div>
+            <div class="actions">
+              <button class="btn primary" onclick="compartirResultado()">Compartir Resultado</button>
+              <button class="btn" onclick="reiniciarTest()">Hacer Test Nuevamente</button>
+            </div>
           </div>
         </div>
       </div>
@@ -421,36 +491,412 @@
       drawer.setAttribute('aria-hidden', String(!open));
     });
 
-    // Quiz logic
-    function getVal(name){
-      const el = document.querySelector('input[name="'+name+'"]:checked');
-      return el ? parseInt(el.value, 10) : null;
-    }
-    function calcularTest(){
-      const v1 = getVal('q1');
-      const v2 = getVal('q2');
-      const v3 = getVal('q3');
-      const box = document.getElementById('resultado');
-      if([v1,v2,v3].some(v => v===null)){
-        box.innerHTML = '<h4>Tu resultado</h4><p class="muted">Responde <strong>todas</strong> las preguntas para calcular tu nivel de oveja negra.</p>';
-        return;
+    // Test de Oveja Negra - Sistema completo
+    let usuarioActual = null;
+    let preguntaActual = 1;
+    let respuestas = {};
+    
+    // Las 21 preguntas del test
+    const preguntas = [
+      {
+        id: 1,
+        pregunta: "¿Termino sabiendo de otras cosas cuando estoy averiguando algo?",
+        opciones: [
+          { valor: "A", texto: "Obvio", puntaje: 2 },
+          { valor: "B", texto: "A veces", puntaje: 1 },
+          { valor: "C", texto: "Ehhm, nah", puntaje: 0 }
+        ]
+      },
+      {
+        id: 2,
+        pregunta: "Prefiero no meterme donde nadie me ha llamado, no me gusta que me tilden de sapo",
+        opciones: [
+          { valor: "A", texto: "Soy un sapo", puntaje: 2 },
+          { valor: "B", texto: "De vez en cuando lo hago", puntaje: 1 },
+          { valor: "C", texto: "Nunca lo hago", puntaje: 0 }
+        ]
+      },
+      {
+        id: 3,
+        pregunta: "Soy de los que encuentro una aguja en un pajar",
+        opciones: [
+          { valor: "A", texto: "Sí", puntaje: 2 },
+          { valor: "B", texto: "A veces", puntaje: 1 },
+          { valor: "C", texto: "Nunca en la vida", puntaje: 0 }
+        ]
+      },
+      {
+        id: 4,
+        pregunta: "Cuando la gente va por leche, yo ya vengo con el queso",
+        opciones: [
+          { valor: "A", texto: "Así es", puntaje: 2 },
+          { valor: "B", texto: "A veces", puntaje: 1 },
+          { valor: "C", texto: "No", puntaje: 0 }
+        ]
+      },
+      {
+        id: 5,
+        pregunta: "Mis amigos me llaman bola de cristal... siempre presiento como saldrán las cosas",
+        opciones: [
+          { valor: "A", texto: "Así es", puntaje: 2 },
+          { valor: "B", texto: "A veces me sale", puntaje: 1 },
+          { valor: "C", texto: "No, pocas veces acierto", puntaje: 0 }
+        ]
+      },
+      {
+        id: 6,
+        pregunta: "Mientras los demás están pensando en las Eliminatorias, yo estoy buscando los tiquetes para el Mundial",
+        opciones: [
+          { valor: "A", texto: "Así es, soy atrevida/o", puntaje: 2 },
+          { valor: "B", texto: "A veces lo hago", puntaje: 1 },
+          { valor: "C", texto: "No, prefiero ser precavido", puntaje: 0 }
+        ]
+      },
+      {
+        id: 7,
+        pregunta: "¿Cómo me miran cuándo propongo mis ideas?",
+        opciones: [
+          { valor: "A", texto: "«Se enloqueció»", puntaje: 2 },
+          { valor: "B", texto: "«Ehmmm, podría funcionar, no sé»", puntaje: 1 },
+          { valor: "C", texto: "«¡ESO ES!»", puntaje: 0 }
+        ]
+      },
+      {
+        id: 8,
+        pregunta: "Siempre me caso con la primera idea que se me ocurre",
+        opciones: [
+          { valor: "A", texto: "Sí, siempre", puntaje: 2 },
+          { valor: "B", texto: "A veces. No sé. Depende...", puntaje: 1 },
+          { valor: "C", texto: "NUNCA", puntaje: 0 }
+        ]
+      },
+      {
+        id: 9,
+        pregunta: "Me invento nuevos caminos para llegar a Roma",
+        opciones: [
+          { valor: "A", texto: "Ya sé que existe un camino, ¿por qué no llegar por otro?", puntaje: 2 },
+          { valor: "B", texto: "Depende...", puntaje: 1 },
+          { valor: "C", texto: "No, si ya hay un camino, debe ser generalmente el mejor", puntaje: 0 }
+        ]
+      },
+      {
+        id: 10,
+        pregunta: "Hago lo que me gusta cuando encuentro el tiempo",
+        opciones: [
+          { valor: "A", texto: "Sí, lo hago", puntaje: 2 },
+          { valor: "B", texto: "A veces sí, a veces no", puntaje: 1 },
+          { valor: "C", texto: "Nah", puntaje: 0 }
+        ]
+      },
+      {
+        id: 11,
+        pregunta: "Tengo claro a lo que vine a este mundo",
+        opciones: [
+          { valor: "A", texto: "Claro que yes", puntaje: 2 },
+          { valor: "B", texto: "Ehmmm, tengo sospechas", puntaje: 1 },
+          { valor: "C", texto: "NPI", puntaje: 0 }
+        ]
+      },
+      {
+        id: 12,
+        pregunta: "Prefiero la comedia al drama",
+        opciones: [
+          { valor: "A", texto: "Vivo de la comedia", puntaje: 2 },
+          { valor: "B", texto: "Un poco de esto, un poco de aquello...", puntaje: 1 },
+          { valor: "C", texto: "Drama queen", puntaje: 0 }
+        ]
+      },
+      {
+        id: 13,
+        pregunta: "Creo que no necesito la aprobación de nadie",
+        opciones: [
+          { valor: "A", texto: "Prefiero pedir perdón que permiso", puntaje: 2 },
+          { valor: "B", texto: "Depende...", puntaje: 1 },
+          { valor: "C", texto: "Sí la necesito. Me ayuda a saber que voy por buen camino", puntaje: 0 }
+        ]
+      },
+      {
+        id: 14,
+        pregunta: "Creo que decir lo que otros piensan pero no dicen, es un arma de doble filo",
+        opciones: [
+          { valor: "A", texto: "Calladito/a me veo más bonito/a", puntaje: 2 },
+          { valor: "B", texto: "Bueno, a veces...", puntaje: 1 },
+          { valor: "C", texto: "Digo lo que pienso. Cero censura", puntaje: 0 }
+        ]
+      },
+      {
+        id: 15,
+        pregunta: "Nací de noche pero no anoche",
+        opciones: [
+          { valor: "A", texto: "Así es, más sabe el diablo por viejo que por diablo", puntaje: 2 },
+          { valor: "B", texto: "Tengo mi experiencia...", puntaje: 1 },
+          { valor: "C", texto: "Me falta muchísimo por aprender", puntaje: 0 }
+        ]
+      },
+      {
+        id: 16,
+        pregunta: "Cuando digo que lo voy a hacer es porque ya tengo un plan claro",
+        opciones: [
+          { valor: "A", texto: "Sí, sin un plan sería un desastre todo", puntaje: 2 },
+          { valor: "B", texto: "A veces es conveniente", puntaje: 1 },
+          { valor: "C", texto: "No. Sin mente como el demente", puntaje: 0 }
+        ]
+      },
+      {
+        id: 17,
+        pregunta: "Tengo claro que todo pasa y de todo se aprende",
+        opciones: [
+          { valor: "A", texto: "Vivir es aprender", puntaje: 2 },
+          { valor: "B", texto: "La mayoría de las veces", puntaje: 1 },
+          { valor: "C", texto: "No. Hay muchísimas experiencias innecesarias", puntaje: 0 }
+        ]
+      },
+      {
+        id: 18,
+        pregunta: "¿Cómo te sientes trabajando en equipo?",
+        opciones: [
+          { valor: "A", texto: "Prefiero trabajar solo", puntaje: 0 },
+          { valor: "B", texto: "Me adapto según el proyecto", puntaje: 1 },
+          { valor: "C", texto: "¡Me encanta la colaboración!", puntaje: 2 }
+        ]
+      },
+      {
+        id: 19,
+        pregunta: "Ante una idea diferente a la tuya, ¿qué haces?",
+        opciones: [
+          { valor: "A", texto: "La descarto inmediatamente", puntaje: 0 },
+          { valor: "B", texto: "La analizo con cuidado", puntaje: 1 },
+          { valor: "C", texto: "La celebro y la mejoro", puntaje: 2 }
+        ]
+      },
+      {
+        id: 20,
+        pregunta: "¿Cómo manejas los errores del equipo?",
+        opciones: [
+          { valor: "A", texto: "Señalo la culpa", puntaje: 0 },
+          { valor: "B", texto: "Busco soluciones", puntaje: 1 },
+          { valor: "C", texto: "Los veo como oportunidades de aprendizaje", puntaje: 2 }
+        ]
+      },
+      {
+        id: 21,
+        pregunta: "¿Qué te motiva más en el trabajo?",
+        opciones: [
+          { valor: "A", texto: "El reconocimiento personal", puntaje: 0 },
+          { valor: "B", texto: "Un buen salario", puntaje: 1 },
+          { valor: "C", texto: "El impacto colectivo", puntaje: 2 }
+        ]
       }
-      const score = v1 + v2 + v3; // 0..6
-      let msg = '', cls = 'score mid';
-      if(score >= 5){ msg = 'Nivel LEYENDA: oveja negra alfa. Tu rebeldía creativa inspira a otros.'; cls='score good'; }
-      else if(score >= 3){ msg = 'Nivel MAKER: te atreves y aprendes rápido. Sigue empujando límites.'; cls='score mid'; }
-      else { msg = 'Nivel EXPLORADOR: ve paso a paso, busca aliados y gana confianza.'; cls='score bad'; }
-      box.innerHTML = `
-        <h4>Tu resultado</h4>
-        <div class="${cls}">Puntaje: ${score} / 6</div>
-        <p class="muted">${msg}</p>
-        <a class="btn" href="https://wa.me/573197550813" target="_blank" rel="noopener">Comparte tu resultado</a>
+    ];
+    
+    // Manejar el formulario inicial
+    document.getElementById('formulario-usuario').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const datos = {
+        nombre: formData.get('nombre'),
+        celular: formData.get('celular'),
+        pais: formData.get('pais'),
+        email: formData.get('email')
+      };
+      
+      try {
+        // Verificar si el email ya existe
+        const response = await fetch('test-oveja-negra.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `action=verificar_email&email=${encodeURIComponent(datos.email)}`
+        });
+        
+        const result = await response.json();
+        
+        if (result.existe) {
+          alert('Este email ya ha sido usado para el test. Solo puedes participar una vez.');
+          return;
+        }
+        
+        // Registrar usuario
+        const registroResponse = await fetch('test-oveja-negra.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `action=registrar_usuario&nombre=${encodeURIComponent(datos.nombre)}&celular=${encodeURIComponent(datos.celular)}&pais=${encodeURIComponent(datos.pais)}&email=${encodeURIComponent(datos.email)}`
+        });
+        
+        const registroResult = await registroResponse.json();
+        
+        if (registroResult.success) {
+          usuarioActual = registroResult.usuario_id;
+          mostrarPregunta(1);
+        } else {
+          alert('Error al registrar usuario: ' + registroResult.message);
+        }
+        
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error de conexión. Intenta nuevamente.');
+      }
+    });
+    
+    // Mostrar pregunta específica
+    function mostrarPregunta(numero) {
+      if (numero < 1 || numero > preguntas.length) return;
+      
+      preguntaActual = numero;
+      const pregunta = preguntas[numero - 1];
+      
+      // Actualizar progreso
+      const progreso = (numero / preguntas.length) * 100;
+      document.getElementById('progress-fill').style.width = progreso + '%';
+      document.getElementById('progress-text').textContent = `Pregunta ${numero} de ${preguntas.length}`;
+      
+      // Mostrar/ocultar botones
+      document.getElementById('btn-anterior').style.display = numero > 1 ? 'block' : 'none';
+      document.getElementById('btn-siguiente').textContent = numero === preguntas.length ? 'Finalizar Test' : 'Siguiente →';
+      
+      // Generar HTML de la pregunta
+      let html = `
+        <div class="pregunta">
+          <h4>${numero}) ${pregunta.pregunta}</h4>
+          <div class="opciones">
       `;
+      
+      pregunta.opciones.forEach(opcion => {
+        const checked = respuestas[numero] === opcion.valor ? 'checked' : '';
+        html += `
+          <div class="opcion">
+            <input type="radio" name="p${numero}" value="${opcion.valor}" ${checked} onchange="guardarRespuesta(${numero}, '${opcion.valor}', ${opcion.puntaje})">
+            <label for="p${numero}">${opcion.texto}</label>
+          </div>
+        `;
+      });
+      
+      html += '</div></div>';
+      
+      document.getElementById('pregunta-actual').innerHTML = html;
+      
+      // Mostrar paso de preguntas
+      document.getElementById('paso-1').style.display = 'none';
+      document.getElementById('paso-preguntas').style.display = 'block';
+      document.getElementById('paso-resultado').style.display = 'none';
     }
-    function reiniciarTest(){
-      document.querySelectorAll('input[type="radio"]').forEach(r=> r.checked=false);
-      document.getElementById('resultado').innerHTML = '<h4>Tu resultado</h4><p class="muted">Responde las preguntas y presiona <strong>Calcular resultado</strong>.</p>';
+    
+    // Guardar respuesta
+    async function guardarRespuesta(pregunta, respuesta, puntaje) {
+      respuestas[pregunta] = respuesta;
+      
+      // Guardar en base de datos
+      if (usuarioActual) {
+        try {
+          await fetch('test-oveja-negra.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `action=guardar_respuesta&usuario_id=${usuarioActual}&pregunta=${pregunta}&respuesta=${respuesta}&puntaje=${puntaje}`
+          });
+        } catch (error) {
+          console.error('Error al guardar respuesta:', error);
+        }
+      }
+    }
+    
+    // Navegar entre preguntas
+    function preguntaAnterior() {
+      if (preguntaActual > 1) {
+        mostrarPregunta(preguntaActual - 1);
+      }
+    }
+    
+    function preguntaSiguiente() {
+      if (preguntaActual < preguntas.length) {
+        mostrarPregunta(preguntaActual + 1);
+      } else {
+        finalizarTest();
+      }
+    }
+    
+    // Finalizar test y mostrar resultado
+    async function finalizarTest() {
+      try {
+        const response = await fetch('test-oveja-negra.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `action=finalizar_test`
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          mostrarResultado(result.resultado);
+        } else {
+          alert('Error al calcular resultado: ' + result.message);
+        }
+        
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error de conexión. Intenta nuevamente.');
+      }
+    }
+    
+    // Mostrar resultado final
+    function mostrarResultado(resultado) {
+      const html = `
+        <div class="resultado-card">
+          <h3>¡Tu resultado está listo!</h3>
+          <div class="resultado-tipo">${resultado.tipo}</div>
+          <div class="resultado-puntaje">Puntaje: ${resultado.puntaje_total} / 42</div>
+          <div class="resultado-mensaje">${resultado.mensaje}</div>
+        </div>
+      `;
+      
+      document.getElementById('resultado-final').innerHTML = html;
+      
+      // Mostrar paso de resultado
+      document.getElementById('paso-1').style.display = 'none';
+      document.getElementById('paso-preguntas').style.display = 'none';
+      document.getElementById('paso-resultado').style.display = 'block';
+    }
+    
+    // Compartir resultado
+    function compartirResultado() {
+      const texto = `¡Acabo de hacer el Test de Oveja Negra de Katharsis K! 🐑⚡`;
+      const url = window.location.href;
+      
+      if (navigator.share) {
+        navigator.share({
+          title: 'Test de Oveja Negra - Katharsis K',
+          text: texto,
+          url: url
+        });
+      } else {
+        // Fallback para navegadores que no soportan Web Share API
+        const whatsappUrl = `https://wa.me/573197550813?text=${encodeURIComponent(texto + ' ' + url)}`;
+        window.open(whatsappUrl, '_blank');
+      }
+    }
+    
+    // Reiniciar test
+    function reiniciarTest() {
+      usuarioActual = null;
+      preguntaActual = 1;
+      respuestas = {};
+      
+      // Limpiar formulario
+      document.getElementById('formulario-usuario').reset();
+      
+      // Mostrar paso inicial
+      document.getElementById('paso-1').style.display = 'block';
+      document.getElementById('paso-preguntas').style.display = 'none';
+      document.getElementById('paso-resultado').style.display = 'none';
     }
   </script>
 </body>
 </html>
+
