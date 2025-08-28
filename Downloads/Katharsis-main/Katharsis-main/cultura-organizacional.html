@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cultura Organizacional | Somos Ovejas Negras de Rebaño - Katharsis K</title>
+  <meta name="description" content="Descubre nuestra cultura organizacional: Somos Ovejas Negras de Rebaño. Transformamos la diferencia en fuerza colectiva." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --panel: #12161f;
+      --card: #161b26;
+      --muted: #93a0b4;
+      --text: #e9eef7;
+      --brand: #6cf0c2; /* menta */
+      --brand-2: #5aa8ff; /* azul */
+      --accent: #ffb757; /* dorado suave */
+      --danger: #ff6b6b;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+      color:var(--text); background:linear-gradient(180deg,var(--bg), #0d1117 30%, #0b0d12);
+      font-size:17px; /* aumentado ligeramente */
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width:min(1120px, 92%); margin-inline:auto}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(11,13,18,.65); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo{width:40px; aspect-ratio:1/1; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:var(--shadow);}
+    .brand h1{font-size:34px; letter-spacing:.4px; margin:0} /* un poco más grande */
+
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{padding:8px 12px; border-radius:999px; color:var(--muted)}
+    .menu a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .cta{background:linear-gradient(135deg,var(--brand-2),var(--brand)); color:#0b0d12 !important; font-weight:700}
+
+    .burger{display:none; width:40px; height:40px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0e1219; align-items:center; justify-content:center}
+
+    @media (max-width: 860px){
+      .menu{display:none}
+      .burger{display:flex}
+    }
+
+    /* Mobile drawer */
+    .drawer{position:fixed; inset:0 0 auto auto; width:100%; height:0; overflow:hidden; background:rgba(8,10,14,.8); backdrop-filter:blur(8px); z-index:40; transition:height .35s ease}
+    .drawer.open{height:100%}
+    .drawer .panel{background:var(--panel); border-top-left-radius:20px; border-top-right-radius:20px; padding:18px; box-shadow:var(--shadow); position:absolute; bottom:0; left:0; right:0}
+    .drawer a{display:block; padding:14px 10px; border-radius:12px; color:var(--muted)}
+    .drawer a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .drawer .cta{margin-top:8px; text-align:center}
+
+    /* Hero */
+    .hero{position:relative; padding:96px 0 120px; overflow:hidden}
+    .hero .bg{
+      position:absolute; inset:0; z-index:-1; opacity:.35;
+      background-image:url('https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=1950&auto=format&fit=crop');
+      background-size:cover; background-position:center;
+      filter:saturate(120%) contrast(110%);
+    }
+    .gradient{position:absolute; inset:0; background:radial-gradient(600px 300px at 15% 20%, rgba(90,168,255,.35), transparent 60%), radial-gradient(600px 300px at 85% 80%, rgba(108,240,194,.25), transparent 60%)}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:36px; align-items:center}
+    .eyebrow{display:inline-flex; gap:8px; align-items:center; font-weight:600; color:#0b0d12; background:linear-gradient(135deg,var(--brand),var(--brand-2)); padding:6px 12px; border-radius:999px}
+    .hero h2{font-size:clamp(30px,5vw,60px); line-height:1.05; margin:14px 0 10px} /* aumentado */
+    .hero p{color:var(--muted); font-size:clamp(16px,2vw,20px)} /* aumentado */
+
+    @media (max-width: 860px){
+      .hero{padding:72px 0 96px}
+      .hero-grid{grid-template-columns:1fr}
+    }
+
+    /* Sections */
+    section{padding:72px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:18px; margin-bottom:28px}
+    .section-head h3{margin:0; font-size:clamp(24px,3.6vw,34px)} /* aumentado */
+    .section-head p{margin:0; color:var(--muted)}
+
+    /* Principios */
+    .principios{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px}
+    .principio{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
+    .principio .numero{display:inline-block; width:40px; height:40px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); border-radius:50%; text-align:center; line-height:40px; font-weight:800; color:#0b0d12; margin-bottom:16px}
+    .principio h4{margin:0 0 12px 0; color:var(--brand)}
+
+    /* Testimonios */
+    .testimonios{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:22px}
+    .testimonio{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); text-align:center}
+    .testimonio img{width:80px; height:80px; border-radius:50%; object-fit:cover; margin:0 auto 16px; border:3px solid var(--brand)}
+    .testimonio .nombre{font-weight:700; margin-bottom:8px}
+    .testimonio .rol{color:var(--accent); font-size:14px; margin-bottom:12px}
+    .testimonio .texto{color:var(--muted); font-style:italic}
+    
+    /* Testimonio del equipo completo */
+    .testimonio.equipo{grid-column:1/-1; text-align:center; padding:32px}
+    .testimonio.equipo img{width:120px; height:120px; border-radius:var(--radius); object-fit:cover; margin:0 auto 20px; border:4px solid var(--brand-2)}
+    .testimonio.equipo .nombre{font-size:20px; color:var(--brand-2); margin-bottom:12px}
+    .testimonio.equipo .rol{color:var(--accent); font-size:16px; margin-bottom:16px}
+    .testimonio.equipo .texto{font-size:16px; line-height:1.6; max-width:800px; margin:0 auto}
+
+    /* Test de Rebaño */
+    .quiz{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+    .quiz .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .quiz h4{margin:8px 0}
+    .quiz label{display:block; padding:8px 10px; margin:6px 0; border:1px solid rgba(255,255,255,.08); border-radius:12px; cursor:pointer; color:var(--muted)}
+    .quiz input{margin-right:10px}
+    .quiz .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .score{font-weight:800; font-size:32px} /* aumentado */
+    .score.good{color:var(--brand)}
+    .score.mid{color:var(--accent)}
+    .score.bad{color:var(--danger)}
+    @media (max-width: 900px){.quiz{grid-template-columns:1fr}}
+
+    /* Footer */
+    footer{padding:28px 0 48px; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .foot .small{font-size:13px}
+    .foot .soc{display:flex; gap:10px}
+    .soc a{display:inline-flex; width:38px; height:38px; align-items:center; justify-content:center; border-radius:12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08)}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .chip{display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); color:#cfe3ff; border:1px solid rgba(255,255,255,.08); padding:6px 10px; border-radius:999px; font-size:13px}
+    .spacer{height:18px}
+    .frase-principal{font-size:clamp(20px,3vw,26px); line-height:1.4; text-align:center; color:var(--brand); font-weight:600; margin:40px 0; padding:30px; background:rgba(108,240,194,.08); border-radius:var(--radius); border:1px solid rgba(108,240,194,.2)} /* aumentado */
+
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <span class="logo" aria-hidden="true"></span>
+        <h1>Katharsis K</h1>
+      </a>
+      <nav class="menu" aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#k2025">Descubre K 2025</a>
+        <a href="index.html#productos">Productos</a>
+        <a href="index.html#equipo">Equipo K</a>
+        <a href="index.html#test">Test de Oveja Negra</a>
+        <a href="index.html#info">Empresa</a>
+        <a class="cta" href="https://wa.me/573197550813" target="_blank" rel="noopener">Contáctanos</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
+    </div>
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="panel container">
+        <a href="index.html" onclick="closeDrawer()">Inicio</a>
+        <a href="index.html#k2025" onclick="closeDrawer()">Descubre K 2025</a>
+        <a href="index.html#productos" onclick="closeDrawer()">Productos</a>
+        <a href="index.html#equipo" onclick="closeDrawer()">Equipo K</a>
+        <a href="index.html#test" onclick="closeDrawer()">Test de Oveja Negra</a>
+        <a href="index.html#info" onclick="closeDrawer()">Empresa</a>
+        <a class="cta" href="https://wa.me/573197550813" target="_blank" rel="noopener" onclick="closeDrawer()">Contáctanos</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="bg"></div>
+      <div class="gradient"></div>
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Cultura Organizacional</span>
+          <h2>Somos <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Ovejas Negras de Rebaño</span></h2>
+          <p>En Katharsis transformamos la diferencia en fuerza colectiva. Porque la verdadera irrupción nace de la unión, empatía y la creatividad compartida.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#principios">Ver Principios</a>
+            <a class="btn" href="#test-rebaño">Test de Rebaño</a>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop" alt="Equipo trabajando en colaboración" style="border-radius:var(--radius); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow)"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frase Principal -->
+    <section>
+      <div class="container">
+        <div class="frase-principal">
+          "En Katharsis somos ovejas negras de rebaño, transformamos la diferencia en fuerza colectiva, porque la verdadera irrupción nace de la unión, empatía y la creatividad compartida"
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 Principios de Rebaño -->
+    <section id="principios">
+      <div class="container">
+        <div class="section-head">
+          <h3>10 Principios de Rebaño</h3>
+          <p class="muted">Los valores que guían nuestra cultura organizacional</p>
+        </div>
+        <div class="principios">
+          <article class="principio">
+            <div class="numero">1</div>
+            <h4>Diversidad como Fortaleza</h4>
+            <p class="muted">Celebramos las diferencias y las convertimos en ventajas competitivas para el equipo.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">2</div>
+            <h4>Colaboración Sobre Competencia</h4>
+            <p class="muted">Priorizamos el trabajo en equipo y la sinergia sobre el individualismo.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">3</div>
+            <h4>Innovación Continua</h4>
+            <p class="muted">Buscamos constantemente nuevas formas de resolver problemas y crear valor.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">4</div>
+            <h4>Empatía Radical</h4>
+            <p class="muted">Nos ponemos en el lugar del otro para entender mejor sus necesidades y perspectivas.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">5</div>
+            <h4>Transparencia Total</h4>
+            <p class="muted">Compartimos información abiertamente para construir confianza y alineación.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">6</div>
+            <h4>Adaptabilidad</h4>
+            <p class="muted">Nos mantenemos flexibles ante los cambios y aprendemos de cada experiencia.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">7</div>
+            <h4>Responsabilidad Compartida</h4>
+            <p class="muted">Cada miembro del rebaño asume la responsabilidad del éxito colectivo.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">8</div>
+            <h4>Creatividad Colectiva</h4>
+            <p class="muted">Las mejores ideas surgen de la colaboración y la diversidad de pensamiento.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">9</div>
+            <h4>Resiliencia del Rebaño</h4>
+            <p class="muted">Juntos superamos los desafíos y nos fortalecemos en la adversidad.</p>
+          </article>
+          <article class="principio">
+            <div class="numero">10</div>
+            <h4>Legado Colectivo</h4>
+            <p class="muted">Construimos algo más grande que nosotros mismos, dejando un impacto duradero.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE DECORATIVO: Test de Rebaño (REEMPLAZADO, integrado con paleta y resultados) -->
+    <section id="test-rebaño" aria-labelledby="test-rebano-title">
+      <style>
+        /* usar variables de paleta definidas en :root */
+        #test-rebaño {
+          margin: 50px auto;
+          padding: 22px;
+          max-width: 980px;
+          background: var(--card);
+          border-radius: 18px;
+          box-shadow: var(--shadow);
+          color: var(--text);
+          border: 1px solid rgba(255,255,255,.04);
+        }
+        #test-rebaño h2 {
+          text-align: center;
+          margin: 6px 0 22px;
+          font-size: 28px;
+          color: var(--brand-2);
+        }
+
+        .question {
+          margin: 20px 0;
+          padding: 16px;
+          border-radius: 14px;
+          background: linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,.00));
+          border: 1px solid rgba(255,255,255,.03);
+        }
+        .pregunta {
+          font-size: 18px; /* aumentado para legibilidad */
+          margin-bottom: 12px;
+          font-weight: 700;
+          text-align: left;
+          color: var(--brand);
+        }
+
+        .respuestas {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: 12px;
+        }
+
+        /* opción como label que contiene el input (radio oculto) */
+        .respuesta {
+          display:block;
+          padding: 12px;
+          border-radius: 12px;
+          background: linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,.00));
+          cursor: pointer;
+          transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+          border: 1px solid rgba(255,255,255,.04);
+          color: var(--text);
+          font-weight:600;
+          text-align:center;
+        }
+        .respuesta:hover { transform: translateY(-4px); box-shadow: 0 8px 26px rgba(0,0,0,.45); }
+
+        /* esconder el radio, usar selector input:checked + .label-text */
+        .respuesta input { display:none; }
+        .respuesta .label-text { display:block; pointer-events:none; }
+
+        .respuesta input:checked + .label-text {
+          background: linear-gradient(135deg,var(--brand),var(--brand-2));
+          color: #071018;
+          border-radius: 10px;
+          padding: 10px;
+          box-shadow: 0 8px 24px rgba(92,200,176,.12);
+        }
+
+        /* resultado y resumen lateral */
+        .quiz-grid { display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start; margin-top:18px; }
+        @media (max-width:980px){ .quiz-grid{grid-template-columns:1fr} }
+
+        .card-result {
+          background: linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,.00));
+          border: 1px solid rgba(255,255,255,.03);
+          padding:16px; border-radius:14px;
+        }
+
+        .resultado-tipo { font-size:22px; } /* ligeramente mayor */
+        .resultado-puntaje { font-size:17px; color:var(--accent); margin-top:8px }
+        .resultado-mensaje { color:var(--muted); margin-top:12px; line-height:1.5 }
+
+        .result-list { margin-top:14px; text-align:left }
+        /* respuestas igual tamaño que las preguntas */
+        .result-list li { margin:8px 0; color:var(--text); font-size:18px; line-height:1.4; }
+        .result-role { font-weight:800; color:var(--brand-2); margin-right:8px; font-size:18px; }
+
+        .btn-send {
+          display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; cursor:pointer;
+          background:linear-gradient(135deg,var(--brand-2),var(--brand)); color:#071018; font-weight:800; border:none; margin-top:12px;
+        }
+      </style>
+
+      <h2 id="test-rebano-title">Test de Rebaño</h2>
+
+      <div class="quiz-grid container">
+        <div>
+          <!-- Pregunta 1 -->
+          <div class="question">
+            <div class="pregunta">1. Cuando trabajas en un proyecto difícil, ¿qué rol sueles asumir?</div>
+            <div class="respuestas">
+              <label class="respuesta">
+                <input type="radio" name="p1" id="p1a" value="tejedor">
+                <span class="label-text">🔗 Conectar ideas</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p1" id="p1b" value="impulsor">
+                <span class="label-text">✨ Inspirar al equipo</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p1" id="p1c" value="facilitador">
+                <span class="label-text">🤝 Coordinar y empoderar</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p1" id="p1d" value="catalizador">
+                <span class="label-text">🚀 Tomar la delantera</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p1" id="p1e" value="facilitador">
+                <span class="label-text">⚙️ Apoyar desde lo operativo</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="question">
+            <div class="pregunta">2. ¿Cómo sueles compartir tus ideas?</div>
+            <div class="respuestas">
+              <label class="respuesta">
+                <input type="radio" name="p2" id="p2a" value="impulsor">
+                <span class="label-text">📢 En reuniones grupales</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p2" id="p2b" value="tejedor">
+                <span class="label-text">👥 Conversaciones uno a uno</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p2" id="p2c" value="facilitador">
+                <span class="label-text">💬 Por chat / feedback escrito</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p2" id="p2d" value="catalizador">
+                <span class="label-text">🎤 Charla frente al equipo</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="question">
+            <div class="pregunta">3. Cuando otros expresan propuestas diferentes a la tuya, ¿cómo respondes?</div>
+            <div class="respuestas">
+              <label class="respuesta">
+                <input type="radio" name="p3" id="p3a" value="tejedor">
+                <span class="label-text">👂 Escucho y construyo sobre ellas</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p3" id="p3b" value="impulsor">
+                <span class="label-text">📝 Doy retroalimentación constructiva</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p3" id="p3c" value="catalizador">
+                <span class="label-text">🔄 Invito a probar e iterar</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p3" id="p3d" value="facilitador">
+                <span class="label-text">🤝 Reúno al grupo para diálogo</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="question">
+            <div class="pregunta">4. ¿Qué describiría mejor tu contribución al equipo?</div>
+            <div class="respuestas">
+              <label class="respuesta">
+                <input type="radio" name="p4" id="p4a" value="catalizador">
+                <span class="label-text">💡 Inspirar la innovación</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p4" id="p4b" value="impulsor">
+                <span class="label-text">😊 Mantener el ánimo</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p4" id="p4c" value="tejedor">
+                <span class="label-text">📌 Traducir visiones en acciones</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p4" id="p4d" value="facilitador">
+                <span class="label-text">🙌 Empoderar a otros</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 5 -->
+          <div class="question">
+            <div class="pregunta">5. ¿Qué valoras más en tu rebaño?</div>
+            <div class="respuestas">
+              <label class="respuesta">
+                <input type="radio" name="p5" id="p5a" value="tejedor">
+                <span class="label-text">🌍 Diversidad de perspectivas</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p5" id="p5b" value="impulsor">
+                <span class="label-text">💖 Empatía en el equipo</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p5" id="p5c" value="catalizador">
+                <span class="label-text">⚡ Sinergia creativa</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p5" id="p5d" value="facilitador">
+                <span class="label-text">🤗 Apoyo mutuo</span>
+              </label>
+              <label class="respuesta">
+                <input type="radio" name="p5" id="p5e" value="tejedor">
+                <span class="label-text">🎉 Celebración de logros</span>
+              </label>
+            </div>
+          </div>
+
+          <div style="text-align:center; margin-top:12px;">
+            <button id="quiz-enviar" class="btn-send" type="button">Ver resultado</button>
+          </div>
+        </div>
+
+        <!-- panel lateral con resultado fijo y lista de roles -->
+        <aside class="card-result" aria-live="polite">
+          <div class="small-muted">Tu resultado</div>
+          <div id="resultado-fijo" class="resultado-block">
+            <div class="resultado-tipo">—</div>
+            <div class="resultado-puntaje small-muted">Selecciona tus respuestas y presiona "Ver resultado"</div>
+            <div class="resultado-mensaje small-muted"></div>
+
+            <ul class="result-list small-muted" style="margin-top:16px">
+              <li><span class="result-role">El Tejedor de Ideas</span>Conectas perspectivas y construyes colaboraciones.</li>
+              <li><span class="result-role">El Impulsor Empático</span>Motivas e inspiras con tu actitud.</li>
+              <li><span class="result-role">El Facilitador</span>Organizas el flujo de trabajo y empoderas a otros.</li>
+              <li><span class="result-role">El Catalizador Colectivo</span>Transformas diferencias en innovación compartida.</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:12px; text-align:center;">
+            <div id="score-display" class="score small-muted">—</div>
+          </div>
+        </aside>
+      </div>
+
+      <script>
+        (function(){
+          const section = document.getElementById('test-rebaño');
+          if (!section) return;
+
+          // visual: resaltar label cuando su radio está checked (ya maneja via CSS), pero añadir selección por teclado/enter
+          const respuestasLabels = section.querySelectorAll('.respuesta');
+          respuestasLabels.forEach(l => {
+            l.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                const input = l.querySelector('input');
+                if (input) input.checked = true;
+                l.querySelector('.label-text').focus();
+              }
+            });
+          });
+
+          // lógica de resultado: contar tipos y mostrar el más frecuente
+          const btn = document.getElementById('quiz-enviar');
+          const resultadoBloque = document.getElementById('resultado-fijo');
+          const tipoEl = resultadoBloque.querySelector('.resultado-tipo');
+          const puntajeEl = resultadoBloque.querySelector('.resultado-puntaje');
+          const mensajeEl = resultadoBloque.querySelector('.resultado-mensaje');
+          const scoreDisplay = document.getElementById('score-display');
+
+          const tipoMeta = {
+            tejedor: { title: 'El Tejedor de Ideas', msg: 'Conectas perspectivas y construyes colaboraciones.' },
+            impulsor: { title: 'El Impulsor Empático', msg: 'Motivas e inspiras con tu actitud.' },
+            facilitador: { title: 'El Facilitador', msg: 'Organizas el flujo de trabajo y empoderas a otros.' },
+            catalizador: { title: 'El Catalizador Colectivo', msg: 'Transformas diferencias en innovación compartida.' }
+          };
+
+          function getSelectedTypes() {
+            const names = ['p1','p2','p3','p4','p5'];
+            const chosen = [];
+            for (const n of names) {
+              const sel = section.querySelector(`input[name="${n}"]:checked`);
+              if (!sel) return null;
+              chosen.push(sel.value);
+            }
+            return chosen;
+          }
+
+          function mostCommon(arr){
+            const counts = arr.reduce((acc,v)=>{ acc[v]=(acc[v]||0)+1; return acc }, {});
+            const entries = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+            return { top: entries[0][0], counts, total: arr.length };
+          }
+
+          btn.addEventListener('click', () => {
+            const sel = getSelectedTypes();
+            if (!sel) {
+              alert('Por favor responde todas las preguntas antes de ver el resultado (versión ilustrativa).');
+              return;
+            }
+            const mc = mostCommon(sel);
+            const top = mc.top;
+            const meta = tipoMeta[top] || { title:'Oveja', msg:'' };
+
+            // calcular "puntaje" simple: proporción de respuestas que coinciden con top
+            const percent = Math.round((mc.counts[top] / mc.total) * 100);
+
+            tipoEl.textContent = `${meta.title} ${top === 'catalizador' ? '🔥' : top === 'impulsor' ? '✨' : top === 'tejedor' ? '🔗' : '🤝'}`;
+            puntajeEl.textContent = `Afinidad: ${percent}% (${mc.counts[top]}/${mc.total})`;
+            mensajeEl.textContent = meta.msg;
+
+            if (scoreDisplay) { scoreDisplay.textContent = `${percent}%`; }
+
+            // enfoque visual
+            resultadoBloque.scrollIntoView({behavior:'smooth', block:'center'});
+          });
+        })();
+      </script>
+    </section>
+    
+    <!-- Testimonios -->
+    <section id="testimonios">
+      <div class="container">
+        <div class="section-head">
+          <h3>Testimonios de Rebaño</h3>
+          <p class="muted">Voces de nuestro equipo que viven la cultura</p>
+        </div>
+        <div class="testimonios">
+          <article class="testimonio">
+            <img src="imagen/image.png" alt="Carmen"/>
+            <div class="nombre">Carmen</div>
+            <div class="rol">Líder de Innovación</div>
+            <div class="texto">"Por primera vez me siento escuchada y valorada en Katharsis. Ahora mis talentos son vistos como un regalo para el equipo. La nueva cultura me dio un lugar en el rebaño donde mi voz cuenta y mi identidad es respetada."</div>
+          </article>
+          <article class="testimonio">
+            <img src="imagen/image2.png" alt="Roberto"/>
+            <div class="nombre">Roberto</div>
+            <div class="rol">Estratega Creativo</div>
+            <div class="texto">"Los talleres nos unieron y derribaron prejuicios. Hoy trabajamos como un rebaño diverso, donde cada idea cuenta y la creatividad surge de la unión. Katharsis recuperó su esencia innovadora sin excluir a nadie."</div>
+          </article>
+          <article class="testimonio">
+            <img src="imagen/image3.png" alt="William"/>
+            <div class="nombre">William</div>
+            <div class="rol">Facilitador de Equipos</div>
+            <div class="texto">"La empresa invierte en nuestro bienestar y nos reconoce de verdad. Ser ovejas negras de rebaño significa que podemos ser diferentes, pero nunca estamos solos. Ahora la creatividad es colectiva y poderosa."</div>
+          </article>
+          <article class="testimonio equipo">
+            <img src="imagen/image4.png" alt="Equipo Katharsis"/>
+            <div class="nombre">Nuestro Rebaño</div>
+            <div class="rol">Equipo Completo</div>
+            <div class="texto">"Hoy en Katharsis trabajamos como un verdadero rebaño creativo: cada voz cuenta, cada talento suma y cada diferencia nos impulsa. Pasamos de competir a construir juntos, y eso se refleja en la energía, la confianza y la alegría con la que enfrentamos cada proyecto."</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="about-logo">
+          <span class="logo" aria-hidden="true"></span>
+          <div>
+            <strong>Katharsis K</strong>
+            <div class="small">© <span id="year"></span> – Cultura Organizacional</div>
+          </div>
+        </div>
+      </div>
+      <div class="soc">
+        <a href="index.html" aria-label="Volver al inicio">🏠</a>
+        <a href="https://wa.me/573197550813" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile drawer
+    const drawer = document.getElementById('drawer');
+    const burger = document.getElementById('burger');
+    const closeDrawer = () => { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); };
+    window.closeDrawer = closeDrawer;
+    burger.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      drawer.setAttribute('aria-hidden', String(!open));
+    });
+
+    // ===== Test ilustrativo: calcular resultado en el cliente y actualizar el bloque "Tu resultado" =====
+    (function(){
+      const scores = {
+        // pregunta 1
+        p1a: 9, p1b: 3, p1c: 6, p1d: 10, p1e: 8,
+        // pregunta 2
+        p2a: 8, p2b: 6, p2c: 4, p2d: 10,
+        // pregunta 3
+        p3a: 10, p3b: 8, p3c: 6, p3d: 7,
+        // pregunta 4
+        p4a: 10, p4b: 7, p4c: 8, p4d: 9,
+        // pregunta 5
+        p5a: 10, p5b: 8, p5c: 7, p5d: 6, p5e: 5
+      };
+
+      const questionNames = ['p1','p2','p3','p4','p5'];
+      const maxPerQuestion = 10; // según los scores definidos
+      const maxTotal = questionNames.length * maxPerQuestion; // 50
+
+      const btn = document.getElementById('quiz-enviar');
+      const resultCard = document.getElementById('resultado-fijo');
+      const scoreDisplay = document.getElementById('score-display');
+
+      function calcularTipo(total) {
+        if (total >= 40) {
+          return {
+            tipo: 'Oveja Negra Total',
+            mensaje: '¡Eres una oveja negra total! Tienes un pensamiento disruptivo y creativo que te hace único. No temes ir contra la corriente y tus ideas pueden cambiar el mundo.'
+          };
+        } else if (total >= 30) {
+          return {
+            tipo: 'Oveja Negra Moderada',
+            mensaje: 'Tienes rasgos de oveja negra. Eres creativo y piensas diferente, pero mantienes un equilibrio entre la innovación y la tradición.'
+          };
+        } else if (total >= 20) {
+          return {
+            tipo: 'Oveja Gris',
+            mensaje: 'Eres una oveja gris. Tienes momentos de creatividad y pensamiento diferente, pero generalmente sigues las convenciones establecidas.'
+          };
+        } else {
+          return {
+            tipo: 'Oveja Blanca',
+            mensaje: 'Eres una oveja blanca. Prefieres seguir las reglas establecidas y mantener el orden tradicional. Eres confiable y predecible.'
+          };
+        }
+      }
+
+      btn.addEventListener('click', () => {
+        // Leer respuestas
+        let total = 0;
+        for (const q of questionNames) {
+          const sel = document.querySelector(`input[name="${q}"]:checked`);
+          if (!sel) {
+            // si falta alguna respuesta, informar y salir
+            alert('Por favor responde todas las preguntas antes de enviar (esta es una versión ilustrativa).');
+            return;
+          }
+          const id = sel.id;
+          total += (scores[id] || 0);
+        }
+
+        const tipoData = calcularTipo(total);
+        const percent = Math.round((total / maxTotal) * 100);
+
+        // Actualizar bloque resultado (elementos existentes)
+        const tipoEl = resultCard.querySelector('.resultado-tipo');
+        const puntajeEl = resultCard.querySelector('.resultado-puntaje');
+        const mensajeEl = resultCard.querySelector('.resultado-mensaje');
+
+        if (tipoEl) tipoEl.textContent = `${tipoData.tipo} 🐑`;
+        if (puntajeEl) puntajeEl.textContent = `Puntaje: ${percent}/100 (${total}/${maxTotal})`;
+        if (mensajeEl) mensajeEl.textContent = tipoData.mensaje;
+
+        // Actualizar resumen lateral
+        if (scoreDisplay) {
+          scoreDisplay.textContent = `${percent}%`;
+          scoreDisplay.classList.remove('good','mid','bad');
+          if (percent >= 80) scoreDisplay.classList.add('good');
+          else if (percent >= 50) scoreDisplay.classList.add('mid');
+          else scoreDisplay.classList.add('bad');
+        }
+
+        // pequeño enfoque visual
+        resultCard.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    })();
+  </script>
+</body>
+</html>
